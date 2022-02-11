@@ -1,11 +1,13 @@
 import express from 'express';
+import cors from 'cors'
 
 const express = require('express')
 const app = express();
+app.use(cors())
 const port = 3000
 
 app.get('/', (req, res) => {
-    res.send('25 years research of quotes - Edgar Putan')
+    res.send(`<h1>25 years research of quotes - Edgar Putan</h1>`)
 })
 
 app.listen(port, () => console.log('test')
