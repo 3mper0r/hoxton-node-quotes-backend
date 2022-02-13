@@ -4,18 +4,8 @@ import cors from 'cors'
 const express = require('express')
 const app = express();
 app.use(cors())
-const port = 3000
+const port = 3001
 
-app.get('/', (req, res) => {
-    res.send(`<h1>25 years research of quotes - Edgar Putan</h1>`)
-})
-
-app.listen(port, () => console.log('test')
-
-)
-app.get('/quotes', (req, res) => {
-    res.send(quotes)
-})
 
 type Quote = {
     quote: string;
@@ -31,8 +21,23 @@ const quotes: Quote[] = [
         quote: "Stop making quotes I never said",
         author: "Albert Einstein"
     },
+]
+
+const qouteOftheweek: Quote[] = [
     {
         quote: "What taste sweeter? Apples or Boobs",
         author: "Isac Newton"
     }
 ]
+
+app.get('/quotes', (req, res) => {
+    res.send(quotes)
+})
+
+app.get('/quoteoftheweek', (req, res) => {
+    res.send(qouteOftheweek)
+})
+
+app.listen(port, () => console.log('server is running on port 3001')
+
+)
