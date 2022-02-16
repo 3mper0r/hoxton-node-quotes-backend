@@ -4,6 +4,7 @@ import cors from 'cors'
 const express = require('express')
 const app = express();
 app.use(cors())
+app.use(express.json())
 const port = 3001
 
 
@@ -58,6 +59,26 @@ app.get('/add-quote', (req, res) => {
 
     res.send(addQuoteForm)
 })
+
+app.post('/quotes', (req, res) => {
+    const newQuote = {
+        id: Math.random(),
+        author: req.body.author,
+        quote: req.body.quote
+
+    }
+    quotes.push(newQuote)
+    res.send(newQuote)
+})
+
+app.patch('/quotes/:id', (req, res) => {
+    res.status(501).send({ error: 'not finished' })
+})
+
+app.delete('/dogs/:id', (req, res) => {
+    res.status(501).send({ error: 'not finished' })
+})
+
 
 app.listen(port, () => console.log('server is running on port 3001')
 
